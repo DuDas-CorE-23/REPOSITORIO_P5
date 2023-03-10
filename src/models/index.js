@@ -12,8 +12,8 @@ const doctor=require(`doctor`)(sequelize, Sequelize.DataTypes);
 hospital.hasMany(patient, { as:`Paciente`});
 patient.belongsTo(hospital, {as:`Hospital`});
 
-doctor.belongsToMany(patient, {as:`pacientes`});
-patient.belongsToMany(doctor, {as:`doctores`});
+doctor.belongsToMany(patient, {as:`pacientes`,through :`Doctores_Pacientes`});
+patient.belongsToMany(doctor, {as:`doctores`,through :`Doctores_Pacientes`});
 
 
 module.exports = exports = sequelize;

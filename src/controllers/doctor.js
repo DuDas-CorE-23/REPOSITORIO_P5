@@ -1,8 +1,14 @@
-const {models} = require('../models');
+const {models, model} = require('../models');
 
 // Crear un doctor
 exports.create = async function (name, surname, speciality) {
-    // Rellene aqui ...
+    let doctor = await models.doctor.build(
+        name = name,
+        surname =surname,
+        speciality=speciality
+
+    );
+    return doctor;
 };
 
 

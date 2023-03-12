@@ -1,4 +1,6 @@
 const {models, model} = require('../models');
+const sequelize = new Sequelize("sqlite:db.sqlite");
+
 
 // Crear un doctor
 exports.create = async function (name, surname, speciality) {

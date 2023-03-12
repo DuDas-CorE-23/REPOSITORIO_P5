@@ -1,4 +1,5 @@
 const {models} = require('../models');
+const sequelize = new Sequelize("sqlite:db.sqlite");
 
 // Muestra la informacion de un paciente
 exports.read = async function (patientId) {

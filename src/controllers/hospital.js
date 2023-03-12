@@ -1,4 +1,6 @@
 const {models} = require('../models');
+const sequelize = new Sequelize("sqlite:db.sqlite");
+
 
 // Crear un  hospital
 exports.create = async function (name, city) {

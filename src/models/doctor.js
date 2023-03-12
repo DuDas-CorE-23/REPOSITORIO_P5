@@ -1,6 +1,8 @@
 'use strict';
 
 const {Model, DataTypes} = require('sequelize');
+const sequelize = new Sequelize("sqlite:db.sqlite");
+
 
 // Definition of the Quiz model:
 module.exports = sequelize => {

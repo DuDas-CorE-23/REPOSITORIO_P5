@@ -2,7 +2,7 @@ const {models} = require('../models');
 
 // Muestra la informacion de un paciente
 exports.read = async function (patientId) {
-    return patient =models.patient.findByPk(patientId);
+    return patient =await models.patient.findByPk(patientId);
 }
 
 // Crea un paciente en un hospital
@@ -19,7 +19,7 @@ exports.create = async function (hospitalId, name, surname, dni) {
 
 // Actualiza un paciente
 exports.update = async function (patientId, name, surname, dni) {
-    let patient = models.patient.findByPk(patientId);
+    let patient = await models.patient.findByPk(patientId);
     patient.name=name;
     patient.surname=surname;
     patient.dni=dni;
@@ -29,7 +29,7 @@ exports.update = async function (patientId, name, surname, dni) {
 
 // Borra un paciente
 exports.delete = async function (patientId) {
-    let pacienteBorrado=models.findByPk(patientId);
+    let pacienteBorrado= await models.findByPk(patientId);
     pacienteBorrado.destroy();
     return pacienteBorrado;
 }
@@ -37,7 +37,7 @@ exports.delete = async function (patientId) {
 
 // Buscar pacientes de un hospital ordenados por el nombre (de la A a la Z)
 exports.indexByHospital = async function (hospitalId) {
-   let pacientesEnOrden=models.pacient.findAll({
+   let pacientesEnOrden= await models.pacient.findAll({
     where:
     hospitalId=hospitalId
    });

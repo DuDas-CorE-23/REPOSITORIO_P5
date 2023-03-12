@@ -7,21 +7,39 @@ exports.read = async function (patientId) {
 
 // Crea un paciente en un hospital
 exports.create = async function (hospitalId, name, surname, dni) {
-    // Rellene aqui ...
+    let pacient= await models.patient.build({
+        name:name,
+        surname:surname,
+        dni:dni,
+        hospitalId:hospitalId
+    });
+    pacient = await pacient.save({files:["name","surname","dni","hospitalId"]});
+    return pacient;
 }
 
 // Actualiza un paciente
 exports.update = async function (patientId, name, surname, dni) {
-    // Rellene aqui ...
+    let patient = models.patient.findByPk(patientId);
+    patient.name=name;
+    patient.surname=surname;
+    patient.dni=dni;
+    
+    return patient;
 }
 
 // Borra un paciente
 exports.delete = async function (patientId) {
-    // Rellene aqui ...
+    let pacienteBorrado=models.findByPk(patientId);
+    pacienteBorrado.destroy();
+    return pacienteBorrado;
 }
 
 
 // Buscar pacientes de un hospital ordenados por el nombre (de la A a la Z)
 exports.indexByHospital = async function (hospitalId) {
-    // Rellene aqui ...
+   let pacientesEnOrden=models.pacient.findAll({
+    where:
+    hospitalId=hospitalId
+   });
+   return pacientesEnOrden;
 }

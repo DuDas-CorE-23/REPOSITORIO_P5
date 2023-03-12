@@ -2,7 +2,7 @@ const {models} = require('../models');
 
 // Crear un  hospital
 exports.create = async function (name, city) {
-    let hospital = models.hospital.build(
+    let hospital =  await models.hospital.build(
         name=name,
         city=city
     );
@@ -12,12 +12,12 @@ exports.create = async function (name, city) {
 
 // Devuelve todos los hospitales
 exports.index = async function () {
-    return Hospitales =models.hospital.findAll();
+    return Hospitales = await models.hospital.findAll();
 }
 
 // Filtra los hospitales por ciudad
 exports.indexByCity = async function (city) {
-    let Hospitales =models.hospital.findAll({
+    let Hospitales = await models.hospital.findAll({
         where :{
             city:city
         }

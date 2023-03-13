@@ -4,13 +4,16 @@ const {models} = require('../models');
 
 // Crear un  hospital
 exports.create = async function (name, city) {
-    let hospital =  await models.hospital.build(
-        name=name,
-        city=city
-    );
-    hospital =await models.hospital.save({fields:["name","city"]});
-    return hospital;
-};
+    try{
+        let hospital =  await models.hospital.build(
+            name=name,
+            city=city
+        );
+        hospital =await models.hospital.save({fields:["name","city"]});
+        return hospital;
+    }catch(error){}
+    };
+    
 
 // Devuelve todos los hospitales
 exports.index = async function () {

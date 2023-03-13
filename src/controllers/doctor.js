@@ -1,17 +1,20 @@
-const {models, model} = require('../models');
-const sequelize = new Sequelize("sqlite:db.sqlite");
+const {models} = require('../models');
+
 
 
 // Crear un doctor
 exports.create = async function (name, surname, speciality) {
-    let doctor = await models.doctor.build(
-        name = name,
-        surname =surname,
-        speciality=speciality
-
-    );
-    doctor = await models.doctor.save({fields:["speciality", "surname", "name"]});
-    return doctor;
+    try{
+        let doctor = await models.doctor.build(
+            name = name,
+            surname =surname,
+            speciality=speciality
+    
+        );
+        doctor = await models.doctor.save({fields:["speciality", "surname", "name"]});
+        return doctor;
+    }catch{}
+    
 };
 
 

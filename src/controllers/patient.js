@@ -8,15 +8,18 @@ exports.read = async function (patientId) {
 
 // Crea un paciente en un hospital
 exports.create = async function (hospitalId, name, surname, dni) {
-    let pacient= await models.patient.build({
-        name:name,
-        surname:surname,
-        dni:dni,
-        hospitalId:hospitalId
-    });
-    pacient = await pacient.save({files:["name","surname","dni","hospitalId"]});
-    return pacient;
-}
+    try{
+        let pacient= await models.patient.build({
+            name:name,
+            surname:surname,
+            dni:dni,
+            hospitalId:hospitalId
+        });
+        pacient = await pacient.save({files:["name","surname","dni","hospitalId"]});
+        return pacient;
+    }catch(error){}
+    
+};
 
 // Actualiza un paciente
 exports.update = async function (patientId, name, surname, dni) {
@@ -31,9 +34,12 @@ exports.update = async function (patientId, name, surname, dni) {
 // Borra un paciente
 exports.delete = async function (patientId) {
     let pacienteBorrado= await models.findByPk(patientId);
-    pacienteBorrado.destroy();
-    return pacienteBorrado;
-}
+    try{
+        pacienteBorrado.destroy();
+        return pacienteBorrado;
+    }catch(error){}
+    
+};
 
 
 // Buscar pacientes de un hospital ordenados por el nombre (de la A a la Z)

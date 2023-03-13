@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const url = process.env.DATABASE_URL || "sqlite:p5.sqlite";
 
-const sequelize = new Sequelize(url,{logging:false})   // Rellene aqui ...
+const sequelize = new Sequelize(url, {logging:false});  // Rellene aqui ...
 
 
 const patient=require(`./patient`)(sequelize, Sequelize.DataTypes);

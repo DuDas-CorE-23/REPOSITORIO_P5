@@ -2,6 +2,7 @@
 
 const {Model, DataTypes} = require('sequelize');
 
+
 // Definition of the Quiz model:
 module.exports = sequelize => {
 
@@ -9,11 +10,21 @@ module.exports = sequelize => {
     }
 
     // Inicialize el modelo Patient aqui
-    Patient.init(
+    Patient.init({
 
-        // Rellene aqui ...
+        dni :{
+            type:DataTypes.STRING,
+        },
+         surname :{
+            type:DataTypes.STRING,
+         },
+         name :{
+            type:DataTypes.STRING,
+         } 
+        },
+        {sequelize}
 
-    )
+    );
 
     return Patient;
 };

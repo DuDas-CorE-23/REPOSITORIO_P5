@@ -2,17 +2,18 @@ const Sequelize = require('sequelize');
 
 const url = process.env.DATABASE_URL || "sqlite:p5.sqlite";
 
-const sequelize =     // Rellene aqui ...
+const sequelize = new Sequelize(url, {logging:false});  // Rellene aqui ...
 
 
-// Import Models
+const patient=require(`./patient`)(sequelize, Sequelize.DataTypes);
+const hospital=require(`./hospital`)(sequelize, Sequelize.DataTypes);
+const doctor=require(`./doctor`)(sequelize, Sequelize.DataTypes);
 
-// Rellene aqui ...
+hospital.hasMany(patient, { as:`Paciente`, foreignKey: 'hospitalId'});
+patient.belongsTo(hospital, {as:`Hospital`, foreignKey: 'hospitalId'});
 
-
-// Relationships
-
-// Rellene aqui ...
+doctor.belongsToMany(patient, {as:`pacientes`,through :`Doctores_Pacientes`});
+patient.belongsToMany(doctor, {as:`doctores`,through :`Doctores_Pacientes`});
 
 
 module.exports = exports = sequelize;

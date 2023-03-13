@@ -9,8 +9,8 @@ const patient=require(`./patient`)(sequelize, Sequelize.DataTypes);
 const hospital=require(`./hospital`)(sequelize, Sequelize.DataTypes);
 const doctor=require(`./doctor`)(sequelize, Sequelize.DataTypes);
 
-hospital.hasMany(patient, { as:`Paciente`});
-patient.belongsTo(hospital, {as:`Hospital`});
+hospital.hasMany(patient, { as:`Paciente`, foreignKey: 'hospitalId'});
+patient.belongsTo(hospital, {as:`Hospital`, foreignKey: 'hospitalId'});
 
 doctor.belongsToMany(patient, {as:`pacientes`,through :`Doctores_Pacientes`});
 patient.belongsToMany(doctor, {as:`doctores`,through :`Doctores_Pacientes`});

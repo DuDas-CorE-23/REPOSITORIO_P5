@@ -5,11 +5,11 @@ const {models} = require('../models');
 // Crear un  hospital
 exports.create = async function (name, city) {
     try{
-        let hospital =  models.hospital.build(
+        let hospital = models.hospital.build(
             name=name,
             city=city
         );
-        hospital =await models.hospital.save({fields:["name","city"]});
+        hospital =await hospital.save({fields:["name","city"]});
         return hospital;
     }catch(error){}
     };

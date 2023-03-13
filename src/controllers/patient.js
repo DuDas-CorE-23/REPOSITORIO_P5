@@ -9,7 +9,7 @@ return patient =await models.patient.findByPk(patientId);
 // Crea un paciente en un hospital
 exports.create = async function (hospitalId, name, surname, dni) {
     try{
-        let pacient= await models.patient.build({
+        let pacient=  models.patient.build({
             name:name,
             surname:surname,
             dni:dni,
@@ -35,7 +35,7 @@ exports.update = async function (patientId, name, surname, dni) {
 exports.delete = async function (patientId) {
     
     try{
-        let pacienteBorrado= await models.findByPk(patientId);
+        let pacienteBorrado= models.findByPk(patientId);
         pacienteBorrado.destroy();
         return pacienteBorrado;
     }catch(error){}

@@ -5,7 +5,7 @@ const {models} = require('../models');
 // Crear un  hospital
 exports.create = async function (name, city) {
     try{
-        let hospital =  await models.hospital.build(
+        let hospital =  models.hospital.build(
             name=name,
             city=city
         );

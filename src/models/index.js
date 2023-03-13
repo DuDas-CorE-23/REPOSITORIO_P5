@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const url = process.env.DATABASE_URL || "sqlite:data.sqlite";
+const url = process.env.DATABASE_URL || "sqlite:p5.sqlite";
 
 const sequelize = new Sequelize(url,{logging:false})   // Rellene aqui ...
 

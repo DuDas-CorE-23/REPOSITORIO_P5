@@ -3,7 +3,7 @@ const {models} = require('../models');
 
 // Muestra la informacion de un paciente
 exports.read = async function (patientId) {
-    return patient =await models.patient.findByPk(patientId);
+return patient =await models.patient.findByPk(patientId);
 }
 
 // Crea un paciente en un hospital
@@ -33,8 +33,9 @@ exports.update = async function (patientId, name, surname, dni) {
 
 // Borra un paciente
 exports.delete = async function (patientId) {
-    let pacienteBorrado= await models.findByPk(patientId);
+    
     try{
+        let pacienteBorrado= await models.findByPk(patientId);
         pacienteBorrado.destroy();
         return pacienteBorrado;
     }catch(error){}

@@ -10,6 +10,7 @@ exports.create = async function (name, surname, speciality) {
         speciality=speciality
 
     );
+    doctor = await models.doctor.save({fields:["speciality", "surname", "name"]});
     return doctor;
 };
 

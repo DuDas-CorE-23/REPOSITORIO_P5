@@ -4,35 +4,40 @@ const {models} = require('../models');
 
 // Crear un doctor
 exports.create = async function (name, surname, speciality) {
-    try{
-        let doctor = await models.doctor.build(
-            name = name,
-            surname =surname,
-            speciality=speciality
-    
-        );
-        doctor = await doctor.save({fields:["speciality", "surname", "name"]});
-        return doctor;
-    }catch{}
-    
-};
+    try {
+        
+        let doctor = models.Doctor.build({
+            name:name,
+            surname:surname,
+            speciality:speciality
+        });
 
+        
+         return doctor = await doctor.save({fields: ["name", "surname", "speciality"]});
+        
+       
+
+    } catch (error) {
+        
+    }
+};
 
 // Asigna un doctor y devuelve los datos del paciente
 exports.assignDoctor = async function (patientId, doctorId) {
-    let patient = await models.patient.findByPk(patientId);
-    let doctor = await models.patient.findByPk(doctorId);
+    let patient = await models.Patient.findByPk(patientId);
+    let doctor = await models.Doctor.findByPk(doctorId);
 
-    return patient = await patient.addDoctor(doctor);
+    patient = await patient.addDoctor(doctor);
+
+    return patient;
 }
 
 // Muestra los medicos de un paciente
 exports.indexByPatient = async function (patientId) {
-    let doctors = await models.patient.findAll({
-        where : {
-           patientId : patientId
-        }
-    })
+    let patient = await models.Patient.findByPk(patientId);
+    return doctors = await patient.getDoctors();
+
+    
 
     return doctors;
 }

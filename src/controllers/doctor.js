@@ -27,9 +27,9 @@ exports.assignDoctor = async function (patientId, doctorId) {
     let patient = await models.Patient.findByPk(patientId);
     let doctor = await models.Doctor.findByPk(doctorId);
 
-    patient = await patient.addDoctor(doctor);
+    return patient = await patient.addDoctor(doctor);
 
-    return patient;
+    
 }
 
 // Muestra los medicos de un paciente

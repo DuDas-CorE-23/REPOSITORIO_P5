@@ -39,5 +39,5 @@ exports.indexByPatient = async function (patientId) {
 
     
 
-    return doctors;
+  
 }

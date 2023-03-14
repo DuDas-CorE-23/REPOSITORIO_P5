@@ -44,11 +44,10 @@ exports.update = async function (patientId, name, surname, dni) {
 
 // Borra un paciente
 exports.delete = async function (patientId) {
-    
+    let pacienteBorrado= models.Pacient.findByPk(patientId);
     try{
-        let pacienteBorrado= models.findByPk(patientId);
-        pacienteBorrado.destroy();
-        return pacienteBorrado;
+    pacienteBorrado.destroy();
+        console.log("paciente borrado con exito");
     }catch(error){}
     
 };

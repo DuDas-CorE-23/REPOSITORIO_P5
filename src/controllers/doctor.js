@@ -12,9 +12,11 @@ exports.create = async function (name, surname, speciality) {
             speciality:speciality
         });
 
-        
+        try{
          return doctor = await doctor.save({fields: ["name", "surname", "speciality"]});
-        
+        }catch{error}{
+            
+        }
        
 
     } catch (error) {

@@ -1,17 +1,39 @@
 const {models} = require('../models');
 
+
+
 // Crear un  hospital
 exports.create = async function (name, city) {
-    // Rellene aqui ...
+    try {
+       
+        let hospital = models.Hospital.build({
+            name:name,
+            city:city
+        });
+
+        
+       return hospital = await hospital.save({fields: ["name", "city"]});
+        
+
+        
+
+    } catch (error) {
+        
+    }
 };
 
 // Devuelve todos los hospitales
 exports.index = async function () {
-    // Rellene aqui ...
+    return Hospitales = await models.Hospital.findAll();
 }
 
 // Filtra los hospitales por ciudad
 exports.indexByCity = async function (city) {
-    // Rellene aqui ...
+    let Hospitales = await models.Hospital.findAll({
+        where :{
+            city:city
+        }
+        });
+        return Hospitales;
 }
 

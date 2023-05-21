@@ -29,14 +29,14 @@ exports.assignDoctor = async function (patientId, doctorId) {
     let patient = await models.Patient.findByPk(patientId);
     let doctor = await models.Doctor.findByPk(doctorId);
 
-    return patient = await patient.addDoctors(doctor);
-
+    patient = await patient.addDoctors(doctor);
+    return patient;
     
 };
 
 // Muestra los medicos de un paciente
 exports.indexByPatient = async function (patientId) {
     let patient = await models.Patient.findByPk(patientId);
-    return doctors = await patient.getDoctors();
-
+    let doctors = await patient.getDoctors();
+    return doctors;
 };

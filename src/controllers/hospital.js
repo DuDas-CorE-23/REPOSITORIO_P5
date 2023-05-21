@@ -25,7 +25,7 @@ exports.create = async function (name, city) {
 // Devuelve todos los hospitales
 exports.index = async function () {
     return Hospitales = await models.Hospital.findAll();
-}
+};
 
 // Filtra los hospitales por ciudad
 exports.indexByCity = async function (city) {
@@ -35,5 +35,5 @@ exports.indexByCity = async function (city) {
         }
         });
         return Hospitales;
-}
+};
 

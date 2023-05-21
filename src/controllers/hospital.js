@@ -18,7 +18,7 @@ exports.create = async function (name, city) {
         
 
     } catch (error) {
-        
+        console.log("Throw new error");
     }
 };
 
